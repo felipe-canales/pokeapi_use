@@ -1,5 +1,11 @@
 import requests
 
+
+def question_1():
+    all_pokemon = requests.get('https://pokeapi.co/api/v2/pokemon-species/?limit=2000').json() #all pokemon in one request
+    return len([pokemon['name'] for pokemon in all_pokemon['results'] if ('at' in pokemon['name'] and pokemon['name'].count('a') == 2)])
+
+
 def question_2():
     SPECIES_QUERY = 'raichu'
     species_set = set()
@@ -12,5 +18,10 @@ def question_2():
     return len(species_set)
 
 
+def question_3():
+    pass
+
+
+
 if __name__ == '__main__':
-    print(question_2())
+    print(question_1())
